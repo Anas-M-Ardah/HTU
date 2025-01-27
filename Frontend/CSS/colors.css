@@ -1,0 +1,20 @@
+:root {
+    /* Main Colors */
+    --primary-red: #FF0000;         /* Bright Red - Main brand color */
+    --dark-red: #CC0000;           /* Darker Red - For hover states */
+    --light-red: #FF4D4D;          /* Light Red - For highlights */
+    --light-red-15: #FF3333;   /* Strong light red */
+    --light-red-5: #FFB3B3;    /* Pale rose */
+    --light-red-7: #FF9999;    /* Light coral */
+    --very-light-red: #FFE6E6;     /* Very Light Red - For backgrounds */
+  
+    /* Complementary Colors */
+    --white: #FFFFFF;              /* Pure White - For text on dark backgrounds */
+    --off-white: #F9F9F9;         /* Off White - For backgrounds */
+    --light-gray: #E5E5E5;        /* Light Gray - For borders */
+    --dark-gray: #333333;         /* Dark Gray - For text */
+  
+    /* Accent Colors */
+    --gold: #FFD700;              /* Gold - For special elements */
+    --black: #000000;             /* Black - For strong contrast */
+  }

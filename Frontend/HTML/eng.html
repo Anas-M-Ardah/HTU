@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/tech.css">
+    <link rel="stylesheet" href="../CSS/modal.css">
+    <link rel="stylesheet" href="../CSS/loader.css">
+    <title>Hours</title>
+</head>
+
+<body>
+    <header>
+        <img src="../Images/HTU Logo200.png" alt="HTU logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tech.html">Technical</a>
+            <a href="soft.html">SoftSkills</a>
+        </nav>
+    </header>
+    <main>
+        <!-- weekly schedule -->
+        <section id="schedule" class="weekly-schedule">
+            <h2>Weekly Schedule</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Place</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-table-body">
+                    <tr>
+                        <td>Monday</td>
+                        <td>9:00 AM</td>
+                        <td>5:00 PM</td>
+                        <td>Room 101</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td>9:00 AM</td>
+                        <td>5:00 PM</td>
+                        <td>Room 102</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>9:00 AM</td>
+                        <td>5:00 PM</td>
+                        <td>Room 103</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="add-hours-form">
+            <h2>Add Hours Completed</h2>
+            <form>
+                <label for="hours">Hours:</label>
+                <input type="number" id="hours" name="hours" required>
+                <button type="button" id="add-hours">Add Hours</button>
+            </form>
+        </section>
+
+        <!-- Modal HTML -->
+        <div id="notification-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="modal-icon"></div>
+                <h2 id="modal-title"></h2>
+                <p id="modal-message"></p>
+            </div>
+        </div>
+
+        <div id="loader" class="loader-container" style="display: none;">
+            <div class="loader">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Hours. All rights reserved.</p>
+    </footer>
+    <script src="../JS/modal.js"></script>
+    <script src="../JS/addHours.js" data-course-name="English"></script>
+    <script src="../JS/weeklySchedule.js" data-course-name="English"></script>
+</body>
+
+</html>
