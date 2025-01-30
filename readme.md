@@ -95,14 +95,3 @@ If you're a student at Hussein Technical University and want to contribute to th
 
 Anas AlArdah - [anas.m.ardah.email@gmail.com](mailto:anas.m.ardah.email@gmail.com)
 ```
-
-The main changes made:
-1. Added proper heading hierarchy
-2. Fixed code block formatting
-3. Organized sections with clear separation
-4. Made the list items properly formatted
-5. Added proper markdown syntax for email link
-6. Used consistent formatting throughout the document
-7. Added bullet points for Future Enhancements section
-
-This format is more readable and follows standard README.md conventions.
