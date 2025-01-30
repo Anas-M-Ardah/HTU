@@ -1,0 +1,128 @@
+:root {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Header */
+.header {
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.header a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .header a {
+        font-size: x-small;
+    }
+}
+
+.header img {
+    width: 10%;
+}
+
+/* Main Image */
+.main-image {
+    width: 100%;
+}
+
+.button-row {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.button-row a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    background-color: red;
+}
+
+/* Logos */
+.container {
+    width: 100%;
+    padding: 0 15px;
+}
+
+.container img {
+    width: 24%;
+}
+
+@media screen and (max-width: 600px) {
+    .container img {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    .container img {
+        width: 49%;
+    }
+
+}
+
+/* Schools and Programs */
+.container .title {
+    color: red;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.container .programs {
+    display: inline-block;
+    width: 24%;
+}
+
+@media screen and (max-width: 600px) {
+    .container .programs {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    .container .programs {
+        width: 49%;
+    }
+}
+
+.programs img {
+    background-color: red;
+    width: 100%;
+}
+
+/* section col1 */
+.col1 {
+    width: 45%;
+    padding: 35px;
+    display: inline-block;
+}
+
+.col1 img {
+    width: 90%;
+    height: auto;
+}
+
+@media screen and (max-width: 1500px) {
+    .col1 {
+        width: 90%;
+        padding: 15px;
+    }
+}
