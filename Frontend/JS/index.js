@@ -32,10 +32,10 @@ const getAllCourses = async () => {
 
 const displayCourses = async () => {
     const courses = await getAllCourses();
-    const table = document.querySelector('table');
+    const tableBody = document.querySelector('tbody');
     console.log(courses);
     courses.forEach(course => {
-        const row = table.insertRow();
+        const row = tableBody.insertRow();
         row.innerHTML = `
             <td>${course.courseName}</td>
             <td>${course.hoursTaken}</td>
