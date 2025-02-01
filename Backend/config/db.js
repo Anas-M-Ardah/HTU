@@ -33,7 +33,8 @@ const sequelize = new Sequelize(DB_LIVE_NAME, DB_LIVE_USER, DB_LIVE_PASSWORD, {
   host: DB_LIVE_HOST,
   port: DB_LIVE_PORT,
   dialect: 'mysql',
-  logging: true
+  logging: true,
+
 });
 
 // Initialize models

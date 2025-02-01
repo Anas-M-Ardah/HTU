@@ -2,7 +2,7 @@
 const { DataTypes } = require('sequelize');
 
 const WeeklySchedule = (sequelize) => {
-    const WeeklySchedule = sequelize.define('WeeklySchedule', {
+    const WeeklySchedule = sequelize.define('weeklyschedules', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,

@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 
 
 const Course = (sequelize) => {
-    const Course = sequelize.define('Course', {
+    const Course = sequelize.define('courses', {
         courseName: {
             type: DataTypes.STRING,
             primaryKey: true,

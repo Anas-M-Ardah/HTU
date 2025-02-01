@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt'); // For password hashing
 
 module.exports = (sequelize) => {
-    const Account = sequelize.define('Account', {
+    const Account = sequelize.define('accounts', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
