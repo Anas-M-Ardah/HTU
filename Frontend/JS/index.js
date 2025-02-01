@@ -21,7 +21,7 @@ const getAllCourses = async () => {
         const courses = await response.json();
         if (response.status === 401) {
             alert('Session expired. Please sign in again.');
-            window.location.href = 'signIn.html';
+            window.location.href = '/html/signIn.html';
         } 
         return courses;
     } catch (error) {
