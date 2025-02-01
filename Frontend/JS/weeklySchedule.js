@@ -3,7 +3,7 @@ const getWeeklySchedule = async () => {
     try {
         const courseName = document.currentScript.getAttribute('data-course-name');
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/api/weekly-schedule/${courseName}`, {
+        const response = await fetch(`https://htu-zb7c.onrender.com/api/weekly-schedule/${courseName}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -14,8 +14,10 @@ const DB_HOST = process.env.DB_HOST;
 const DB_PORT = process.env.DB_PORT;
 
 // live version
-const DB_LIVE_NAME = process.env.DB_LIVE_NAME;
+const DB_LIVE_NAME = process.env.DB_LIVE_DB_NAME;
 const DB_LIVE_USER = process.env.DB_LIVE_USER;
+
+
 const DB_LIVE_PASSWORD = process.env.DB_LIVE_PASSWORD;
 const DB_LIVE_HOST = process.env.DB_LIVE_HOST;
 const DB_LIVE_PORT = process.env.DB_LIVE_PORT;

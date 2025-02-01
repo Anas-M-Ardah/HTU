@@ -5,7 +5,7 @@ const sendSignInRequest = () => {
 
     const data = { identifier, password };
 
-    fetch('http://localhost:3000/api/signin', {
+    fetch('https://htu-zb7c.onrender.com/api/signin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

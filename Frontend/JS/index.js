@@ -15,7 +15,7 @@ const hideLoader = () => {
 const getAllCourses = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:3000/api/courses/all', {
+        const response = await fetch('https://htu-zb7c.onrender.com/api/courses/all', {
             headers: token ? { 'Authorization': `Bearer ${token}` } : {}
         });
         const courses = await response.json();
