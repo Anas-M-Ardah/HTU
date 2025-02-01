@@ -16,7 +16,7 @@ const sendSignInRequest = () => {
         .then(data => {
             if (data) {
                 localStorage.setItem('token', data.token);
-                window.location.href = '/Frontend/index.html';
+                window.location.href = '/index.html';
             } else {
                 showModal(false, "Invalid email or password");
             }
