@@ -23,6 +23,8 @@ const addHoursTaken = async (courseName, hours) => {
             throw new Error('Course not found');
         }
         course.hoursTaken += Number(hours);
+        course.lastHoursAdded = Number(hours);
+        course.courseLastUpdated = new Date();
         await course.save();
         return course;
     } catch (error) {

@@ -32,7 +32,7 @@ async function createDB() {
   try {
     // Apply associations
     applyAssociations(sequelize);
-    await sequelize.sync();
+    await sequelize.sync({ force: true });
     console.log('Database and tables created successfully.');
   } catch (err) {
     console.error('Unable to create database and tables:', err);

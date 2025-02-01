@@ -17,6 +17,7 @@ app.use('/api', accountRouter);
 const port = 3000;
 
 app.listen(port, async () => {
-    await createDB();
+    // await createDB();
+    await connectDB();
     console.log(`App is listening on port ${port}`)
 });

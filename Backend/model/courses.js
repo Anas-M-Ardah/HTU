@@ -43,6 +43,22 @@ const Course = (sequelize) => {
             get() {
                 return Math.round((this.hoursTaken / this.totalHours) * 100);
             }
+        },
+        lastHoursAdded: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+            validate: {
+                min: 0
+            }
+        },
+        courseLastUpdated: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+            validate: {
+                isDate: true
+            }
         }
     }, {
         timestamps: true,
@@ -50,7 +66,7 @@ const Course = (sequelize) => {
             beforeValidate: (course) => {
                 // Automatically calculate hoursRemaining
                 course.hoursRemaining = course.totalHours - course.hoursTaken;
-            }
+            },
         }
     });
 
