@@ -63,20 +63,28 @@ const validateForm = () => {
 }
 
 const signinBtn = document.querySelector('#signin-button');
-signinBtn.addEventListener('click', (e) => {
+signinBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    showLoader();
-    if (validateForm()) {
-        sendSignInRequest();
+
+    if (!validateForm()) {
+        return;
     }
-    hideLoader();
+
+    showLoader();
+    try {
+        await sendSignInRequest();
+    } catch (error) {
+        console.error('Sign-in error:', error);
+    } finally {
+        hideLoader(); // This runs after the request completes
+    }
 });
 
 
 function togglePassword(element) {
     const passwordInput = document.getElementById('password');
     const toggleIcon = document.getElementById('togglePassword');
-    
+
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         toggleIcon.classList.remove('fa-eye');
