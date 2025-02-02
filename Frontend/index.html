@@ -19,31 +19,39 @@
             <a href="/html/soft.html">SoftSkills</a>
         </nav>
     </header>
-    <main>
-        <!-- Table with course name and hours taken, hours remaining, total hours, and progress bar -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Course</th>
-                    <th>Hours Taken</th>
-                    <th>Hours Remaining</th>
-                    <th>Total Hours</th>
-                    <th>Progress Bar</th>
-                    <th>Last Updated On</th>
+
+    <!-- Table with course name and hours taken, hours remaining, total hours, and progress bar -->
+
+    <main class="main-container">
+        <table class="course-table">
+            <thead class="course-table__header">
+                <tr class="course-table__row">
+                    <th class="course-table__cell">Course</th>
+                    <th class="course-table__cell">Hours Taken</th>
+                    <th class="course-table__cell">Hours Remaining</th>
+                    <th class="course-table__cell">Total Hours</th>
+                    <th class="course-table__cell">Progress Bar</th>
+                    <th class="course-table__cell">Last Updated On</th>
                 </tr>
             </thead>
-            <tbody class="table-body">
-                <!-- Table rows for each course -->
+            <tbody class="course-table__body">
+                <!-- Table rows would follow the same pattern -->
+                <tr class="course-table__row course-table__row--odd">
+                    <td class="course-table__cell">...</td>
+                </tr>
+                <tr class="course-table__row course-table__row--even">
+                    <td class="course-table__cell">...</td>
+                </tr>
             </tbody>
         </table>
-
+        
         <div id="loader" class="loader-container" style="display: none;">
             <div class="loader-wrapper">
                 <div class="loader"></div>
             </div>
         </div>
-
     </main>
+
     <footer>
         <p>&copy; 2025 Hours. All rights reserved.</p>
     </footer>
