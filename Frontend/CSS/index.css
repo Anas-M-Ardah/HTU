@@ -92,6 +92,11 @@ main table tr:hover{
     color: var(--light-gray);
 }
 
+.table-header-row{
+    background-color: var(--light-red);
+    color: var(--light-gray);
+}
+
 /* footer styles  */
 
 footer{

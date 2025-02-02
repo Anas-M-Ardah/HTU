@@ -1,3 +1,19 @@
+//show loader
+const showLoader = () => {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        loader.style.display = 'flex';
+    }
+}
+
+//hide loader
+const hideLoader = () => {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        loader.style.display = 'none';
+    }
+}
+
 
 const sendSignInRequest = () => {
 
@@ -49,9 +65,11 @@ const validateForm = () => {
 const signinBtn = document.querySelector('#signin-button');
 signinBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    showLoader();
     if (validateForm()) {
         sendSignInRequest();
     }
+    hideLoader();
 });
 
 
