@@ -69,7 +69,7 @@ signinBtn.addEventListener('click', async (e) => {
     if (!validateForm()) {
         return;
     }
-
+    alert('Signing in...');
     showLoader();
     try {
         await sendSignInRequest();
@@ -77,6 +77,7 @@ signinBtn.addEventListener('click', async (e) => {
         console.error('Sign-in error:', error);
     } finally {
         hideLoader(); // This runs after the request completes
+        alert('Signed in successfully!');
     }
 });
 
