@@ -33,6 +33,7 @@ const getAllCourses = async () => {
 const displayCourses = async () => {
     const courses = await getAllCourses();
     const table = document.querySelector('table');
+    console.log(courses);
     courses.forEach(course => {
         const row = table.insertRow();
         row.innerHTML = `
@@ -41,6 +42,7 @@ const displayCourses = async () => {
             <td>${course.hoursRemaining}</td>
             <td>${course.totalHours}</td>
             <td>${course.progressBar}%</td>
+            <td>${course.updatedAt.split('T')[0]} (added ${course.lastHoursAdded})</td>
         `;
     });
 };
