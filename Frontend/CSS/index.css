@@ -87,6 +87,10 @@ main table tr:hover{
     background-color: var(--light-gray);
 }
 
+.table-header{
+    background-color: var(--light-red);
+    color: var(--light-gray);
+}
 
 /* footer styles  */
 
