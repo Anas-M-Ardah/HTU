@@ -1,20 +1,3 @@
-//show loader
-const showLoader = () => {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        loader.style.display = 'flex';
-    }
-}
-
-//hide loader
-const hideLoader = () => {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        loader.style.display = 'none';
-    }
-}
-
-
 const sendSignInRequest = () => {
 
     const { identifier, password } = getInputValue();
@@ -70,13 +53,12 @@ signinBtn.addEventListener('click', async (e) => {
         return;
     }
     alert('Signing in...');
-    showLoader();
     try {
         await sendSignInRequest();
     } catch (error) {
         console.error('Sign-in error:', error);
+        alert('Sign-in failed. Please try again.');
     } finally {
-        hideLoader(); // This runs after the request completes
         alert('Signed in successfully!');
     }
 });
