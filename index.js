@@ -50,4 +50,3 @@ function validateLength(passwordLength) {
 }
 
 password.addEventListener("input", validatePassword);
-password.addEventListener("change", validatePassword);
