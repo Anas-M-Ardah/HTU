@@ -47,62 +47,46 @@ header nav a:hover{
 
 /* main styles */
 
-.main-container {
+main{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.25rem;
-    padding: 1.25rem;
+    gap: 20px;
+    padding: 20px;
     flex-grow: 1;
     font-family: 'Titillium Web', sans-serif;
 }
 
-.course-table {
+main table{
     width: 100%;
     border-collapse: collapse;
     border: 1px solid var(--dark-gray);
-    background-color: var(--white);
 }
 
-.course-table__header {
-    background-color: var(--light-red);
-    color: var(--white);
-}
-
-.course-table__cell {
-    padding: 0.625rem;
+main table th, main table td{
+    padding: 10px;
     border: 1px solid var(--dark-gray);
     text-align: center;
 }
 
-.course-table__row {
-    transition: background-color 0.2s ease;
+main table th{
+    background-color: var(--light-red);
+    color: var(--light-gray);
 }
 
-.course-table__row--even {
+main table tr:nth-child(even){
     background-color: var(--light-red-5);
 }
 
-.course-table__row--odd {
+main table tr:nth-child(odd){
     background-color: var(--off-white);
 }
 
-.course-table__row:hover {
+main table tr:hover{
     background-color: var(--light-gray);
-    cursor: pointer;
 }
 
-/* Optional: Add responsive styles */
-@media screen and (max-width: 768px) {
-    .course-table {
-        font-size: 0.875rem;
-    }
-
-    .course-table__cell {
-        padding: 0.5rem;
-    }
-}
 
 /* footer styles  */
 
