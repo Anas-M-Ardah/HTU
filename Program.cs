@@ -9,6 +9,10 @@ internal class Program
             { "water", 0.25 },
             { "chips", 0.50 }
         };
+
+        double money = 0, itemPrice;
+        string userChoice;
+
         Print("\nVending Machine\n");
 
         while (true)
@@ -19,7 +23,7 @@ internal class Program
             Print("");
 
             InsertMoney:
-            double money = TakeMoney();
+            money += TakeMoney();
             if (!isMoneyMoreThanZero(money))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -29,15 +33,18 @@ internal class Program
             }
 
             UserChoice:
-            string userChoice = TakeUserChoice(items);
+            userChoice = TakeUserChoice(items);
             if (!isValidUserChoice(userChoice)) goto UserChoice;
-            double itemPrice = items[userChoice];
+            itemPrice = items[userChoice];
             if (!isBalanceValid(money, itemPrice)) goto InsertMoney;
 
             //Print Output
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\nCollect your item '{userChoice}'");
-            Console.WriteLine($"Collect your change {ReturnChange(money, itemPrice)}\n");
+            Console.WriteLine($"Collect your change ${ReturnChange(money, itemPrice):F2}\n");
+
+            //Do the transaction
+            money -= itemPrice;
         }
 
 
