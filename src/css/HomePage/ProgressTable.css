@@ -1,0 +1,156 @@
+/* ProgressTable.css */
+
+/* Parent Container with percentage padding */
+.parent-container {
+  padding-top: 10%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .parent-container {
+    padding-top: 30%;
+  }
+}
+
+@media (max-width: 576px) {
+  .parent-container {
+    padding-top: 40%;
+  }
+}
+
+/* Loader */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Table Container */
+.table-responsive {
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.table-responsive:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Table */
+.table {
+  width: 100%;
+  background-color: var(--white);
+  margin-bottom: 0;
+}
+
+/* Table Header */
+.table-header {
+  background-color: var(--primary-red);
+  color: var(--white);
+}
+
+.table th {
+  padding: 15px;
+  text-align: center;
+  font-weight: 600;
+  vertical-align: middle;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Table Body */
+.table td {
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+  border-top: 1px solid var(--light-gray);
+  transition: all 0.3s ease;
+}
+
+/* Alternating Row Colors */
+.pink-row {
+  background-color: var(--light-red-5);
+}
+
+/* Row Hover Effects */
+.table tbody tr {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: var(--off-white);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table tbody tr.pink-row:hover {
+  background-color: var(--light-red-7);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(255, 0, 0, 0.05);
+}
+
+/* Progress Bar */
+.progress {
+  height: 20px;
+  background-color: var(--light-gray);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  background-color: var(--primary-red);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Progress Bar Hover Effect */
+.progress:hover .progress-bar {
+  background-color: var(--dark-red);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+/* Cell Hover Effect */
+.table td:hover {
+  background-color: rgba(255, 0, 0, 0.02);
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table th,
+  .table td {
+    min-width: 120px;
+    white-space: nowrap;
+  }
+}
+
+/* Enhanced Scrollbar */
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--primary-red);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-red);
+}
