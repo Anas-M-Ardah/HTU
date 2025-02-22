@@ -1,13 +1,15 @@
 // AddHours.jsx
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Modal from '../Modal/Modal';
 import '../../css/WeeklySchedulePage/AddHours.css';
 
-const AddHours = () => {
+const AddHours = ({ course }) => {
   const [hours, setHours] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState({ type: '', text: '' });
-  const { courseName } = useParams();
+  const [showModal, setShowModal] = useState(false);
+  const [modalInfo, setModalInfo] = useState({ type: '', message: '' });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,32 +17,56 @@ const AddHours = () => {
     
     try {
       const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/signin');
+        return;
+      }
+
       const response = await fetch('https://htu-zb7c.onrender.com/api/courses/add-hours', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ courseName, hours })
+        body: JSON.stringify({ 
+          courseName: course, 
+          hours: Number(hours) 
+        })
       });
 
+      const data = await response.json();
+
       if (response.status === 401) {
+        localStorage.removeItem('token');
         navigate('/signin');
         return;
       }
 
       if (response.ok) {
-        setMessage({ type: 'success', text: `Successfully added ${hours} hours to ${courseName}` });
+        setModalInfo({
+          type: 'success',
+          message: `Successfully added ${hours} hours to ${course}`
+        });
         setHours('');
       } else {
-        const error = await response.json();
-        setMessage({ type: 'error', text: error.message });
+        setModalInfo({
+          type: 'error',
+          message: data.message || 'Failed to add hours'
+        });
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'Network error occurred' });
+      setModalInfo({
+        type: 'error',
+        message: 'Network error occurred. Please try again.'
+      });
     } finally {
       setIsLoading(false);
+      setShowModal(true);
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -55,17 +81,14 @@ const AddHours = () => {
             value={hours}
             onChange={(e) => setHours(e.target.value)}
             className="form-control"
+            min="0"
+            step="1"
             required
           />
         </div>
-        {message.text && (
-          <div className={`alert ${message.type === 'success' ? 'alert-success' : 'alert-danger'}`}>
-            {message.text}
-          </div>
-        )}
         <button 
           type="submit" 
-          className="btn btn-primary"
+          className="btn btn-primary w-100"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -78,6 +101,13 @@ const AddHours = () => {
           )}
         </button>
       </form>
+
+      <Modal
+        show={showModal}
+        type={modalInfo.type}
+        message={modalInfo.message}
+        onClose={closeModal}
+      />
     </section>
   );
 };

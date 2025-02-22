@@ -14,7 +14,7 @@ const WeeklySchedulePage = ({ courseName }) => {
       <Header />
       <main className="main-content">
         <WeeklySchedule course={courseName} />
-        <AddHours />
+        <AddHours course={courseName} />
       </main>
       <Footer />
     </div>
