@@ -13,4 +13,19 @@ const getWeeklyScheduleByCourseName = async (courseName) => {
     }
 };
 
-module.exports = { getWeeklyScheduleByCourseName };
+const getWeeklyScheduleByCourseNameRamadan = async (courseName) => {
+    try {
+        const weeklySchedule = await WeeklySchedule.findAll({
+            where: {
+              courseName,
+              createdAt: new Date('2025-02-28')
+            }
+        });
+        return weeklySchedule;
+    } catch (error) {
+        console.error('Error occurred while retrieving weekly schedule by course name:', error);
+        throw error;
+    }
+};
+
+module.exports = { getWeeklyScheduleByCourseName, getWeeklyScheduleByCourseNameRamadan };
