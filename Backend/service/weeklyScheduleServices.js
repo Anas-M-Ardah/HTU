@@ -10,7 +10,7 @@ const getWeeklyScheduleByCourseName = async (courseName) => {
             where: {
                 courseName,
                 createdAt: {
-                    [Op.lt]: new Date('2024-02-27')
+                    [Op.lt]: new Date('2025-02-27')
                 }
             }
         });
