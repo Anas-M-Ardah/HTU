@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import '../../css/WeeklySchedulePage/WeeklySchedule.css';
 
-const WeeklySchedule = ({ course }) => {
+const WeeklySchedule = ({ course, isRamadan }) => {
   const [schedule, setSchedule] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,7 +27,8 @@ const WeeklySchedule = ({ course }) => {
       }
 
       console.log('Fetching schedule for:', course);
-      const response = await fetch(`https://htu-zb7c.onrender.com/api/weekly-schedule/${course}`, {
+      const link = isRamadan ? 'https://htu-zb7c.onrender.com/api/weekly-schedule-ramadan' : 'https://htu-zb7c.onrender.com/api/weekly-schedule';
+      const response = await fetch(`${link}/${course}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -84,7 +85,7 @@ const WeeklySchedule = ({ course }) => {
 
   return (
     <section className="weekly-schedule">
-      <h2>Weekly Schedule - {course}</h2>
+      <h2>Weekly Schedule - {course} {isRamadan ? ' - Ramadan' : ''}</h2>
       <div className="table-responsive">
         <table className="table">
           <thead>
