@@ -2,6 +2,7 @@
 
 ## Overview
 MyHTUSchedule is a dynamic full-stack application designed to help HTU (Hussein Technical University) students track their progress in the upskilling program by managing course hours.
+https://htu-schedule.netlify.app/
 
 ## Purpose
 This project was created to address the need for a centralized system where students can:
