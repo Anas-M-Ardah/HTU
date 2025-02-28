@@ -26,7 +26,9 @@ const getWeeklyScheduleByCourseNameRamadan = async (courseName) => {
         const weeklySchedule = await WeeklyScheduleModel.findAll({
             where: {
                 courseName,
-                createdAt: new Date('2025-02-28')
+                createdAt: {
+                    [Op.gt]: new Date('2025-02-27')
+                }
             }
         });
         return weeklySchedule;
