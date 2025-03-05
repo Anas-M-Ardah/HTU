@@ -82,7 +82,6 @@ const AddHours = ({ course }) => {
             onChange={(e) => setHours(e.target.value)}
             className="form-control"
             min="0"
-            step="1"
             required
           />
         </div>
