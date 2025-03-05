@@ -14,7 +14,7 @@ const Course = (sequelize) => {
             }
         },
         hoursTaken: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false,
             defaultValue: 0,
             validate: {
@@ -22,7 +22,7 @@ const Course = (sequelize) => {
             }
         },
         hoursRemaining: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false,
             validate: {
                 min: 0
@@ -32,7 +32,7 @@ const Course = (sequelize) => {
             }
         },
         totalHours: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false,
             validate: {
                 min: 0
@@ -45,7 +45,7 @@ const Course = (sequelize) => {
             }
         },
         lastHoursAdded: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false,
             defaultValue: 0,
             validate: {
