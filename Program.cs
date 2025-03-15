@@ -7,14 +7,13 @@
             Console.WriteLine("Enter the Number of students");
             int n = int.Parse(Console.ReadLine());
 
-            Student[] students = new Student[n];
-
+            List<Student> students = new List<Student>();
             for (int i = 0; i < n; i++)
             {
                 //number of courses
                 Console.WriteLine($"Enter the number of courses student {i+1} has");
                 int numberOfCourses = int.Parse(Console.ReadLine());
-                students[i] = new Student(numberOfCourses);
+                students.Add(new Student(numberOfCourses));
 
                 //fill in the students info 
                 students[i].FillInfo();
@@ -31,7 +30,7 @@
             foreach (Student student in students)
             {
                 Console.WriteLine($"{student.Name}: ");
-                for (int i = 0; i < student.studentCourses.Length; i++)
+                for (int i = 0; i < student.studentCourses.Count; i++)
                 {
                     student.studentCourses[i].PrintGrade();
                 }

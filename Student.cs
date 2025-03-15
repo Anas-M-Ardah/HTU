@@ -10,18 +10,19 @@ namespace MarksOOP
     {
         public string ID;
         public string Name;
-        public StudentCourse[] studentCourses;
+        public List<StudentCourse> studentCourses;
 
         public Student(int numberOfCourses)
         {
-            this.studentCourses = new StudentCourse[numberOfCourses];
+            this.studentCourses = new List<StudentCourse>();
             initializeStudentCourses(numberOfCourses);
         }
 
         private void initializeStudentCourses(int n)
         {
-            for (int i = 0; i < n; i++) {
-                studentCourses[i] = new StudentCourse();
+            for (int i = 0; i < n; i++)
+            {
+                studentCourses.Add(new StudentCourse());
             }
         }
 
@@ -52,7 +53,7 @@ namespace MarksOOP
 
         public double calculateAvg()
         {
-            return this.getSumOfMarks()/this.studentCourses.Length;
+            return this.getSumOfMarks()/this.studentCourses.Count;
         }
 
         public void PrintAverage()
