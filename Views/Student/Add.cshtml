@@ -1,0 +1,50 @@
+﻿<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-12">
+            <form id="courseForm" asp-action="create" class="p-5 border rounded bg-white shadow-lg">
+                <h2 class="mb-5 text-center">Add a New Student</h2>
+
+                <div class="form-group mb-4">
+                    <label for="sName" class="form-label">Student Name</label>
+                    <input type="text" class="form-control form-control-lg" name="sName" placeholder="Enter student name" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="email" class="form-label">Student Email</label>
+                    <input type="email" class="form-control form-control-lg" name="email" placeholder="Student Email" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <h3 class="mb-3">Select a Course</h3>
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Select</th>
+                                <th>Course Name</th>
+                                <th>Description</th>
+                                <th>Instructor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var course in ViewBag.Courses)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        <input type="radio" name="courseId" value="@course.Id" required>
+                                    </td>
+                                    <td>@course.Name</td>
+                                    <td>@course.Description</td>
+                                    <td>@course.InstructorName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
