@@ -1,56 +1,56 @@
 ﻿@{
     Student student = ViewBag.Student;
+    List<Course> courses = ViewBag.Courses;
 }
 
-<div class="container my-5">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-12">
-            <form id="courseForm" asp-action="confirmUpdate" class="p-5 border rounded bg-white shadow-lg">
-                <h2 class="mb-5 text-center">Update</h2>
-                <input type="hidden" name="sId" value="@student.Id" />
-                <div class="form-group mb-4">
-                    <label for="sName" class="form-label">Student Name</label>
-                    @*//replace with asp.for*@
-                    <input type="text" class="form-control form-control-lg" name="sName" value="@student.Name" placeholder="Enter student name" required>
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Update Student</h3>
                 </div>
+                <div class="card-body p-4">
+                    <form asp-action="confirmUpdate">
+                        <input asp-for="@student.Id" hidden />
 
-                <div class="form-group mb-4">
-                    <label for="email" class="form-label">Student Email</label>
-                    <input type="email" class="form-control form-control-lg" name="email" value="@student.Email" placeholder="Student Email" required>
-                </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-bold">Student Name</label>
+                            <input asp-for="@student.Name" class="form-control" />
+                        </div>
 
-                <div class="form-group mb-4">
-                    <h3 class="mb-3">Select a Course</h3>
-                    <p>Current Course: <bold>@student.Course.Name</bold></p>
-                    <table class="table table-hover table-bordered">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Select</th>
-                                <th>Course Name</th>
-                                <th>Description</th>
-                                <th>Instructor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var course in ViewBag.Courses)
-                            {
-                                <tr>
-                                    <td class="text-center">
-                                        <input type="radio" name="courseId" value="@course.Id" required>
-                                    </td>
-                                    <td>@course.Name</td>
-                                    <td>@course.Description</td>
-                                    <td>@course.InstructorName</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-bold">Student Email</label>
+                            <input asp-for="@student.Email" class="form-control" />
+                        </div>
 
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        <div class="form-group mb-4">
+                            <label class="form-label fw-bold">Courses</label>
+                            <select name="courseIds[]" class="form-select" multiple size="5">
+                                @foreach (var course in courses)
+                                {
+                                    @if (student.Courses.Any(sc => sc.Id == course.Id))
+                                    {
+                                        <option value="@course.Id" selected>@course.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@course.Id">@course.Name</option>
+                                    }
+                                }
+                            </select>
+                            <div class="form-text text-muted">
+                                Hold Ctrl (Windows) or Command (Mac) to select multiple courses
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Update</button>
+                            <a href="@Url.Action("Index", "Student")" class="btn btn-secondary btn-lg">Cancel</a>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

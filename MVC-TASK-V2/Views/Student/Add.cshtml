@@ -1,49 +1,39 @@
 ﻿@model List<Course>
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-12">
-            <form id="courseForm" asp-action="create" class="p-5 border rounded bg-white shadow-lg">
+        <div class="col-md-8">
+            <form id="courseForm" asp-action="create" method="post" class="p-5 border rounded bg-white shadow-lg">
                 <h2 class="mb-5 text-center">Add a New Student</h2>
 
                 <div class="form-group mb-4">
-                    <label for="sName" class="form-label">Student Name</label>
-                    <input type="text" class="form-control form-control-lg" name="sName" placeholder="Enter student name" required>
+                    <label for="SName" class="form-label">Student Name</label>
+                    <input type="text" class="form-control form-control-lg" name="SName" placeholder="Enter student name" required>
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="email" class="form-label">Student Email</label>
-                    <input type="email" class="form-control form-control-lg" name="email" placeholder="Student Email" required>
+                    <label for="Email" class="form-label">Student Email</label>
+                    <input type="email" class="form-control form-control-lg" name="Email" placeholder="Student Email" required>
                 </div>
 
                 <div class="form-group mb-4">
-                    <h3 class="mb-3">Select a Course</h3>
-                    <table class="table table-hover table-bordered">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Select</th>
-                                <th>Course Name</th>
-                                <th>Description</th>
-                                <th>Instructor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var course in Model)
-                            {
-                                <tr>
-                                    <td class="text-center">
-                                        <input type="radio" name="courseId" value="@course.Id" required>
-                                    </td>
-                                    <td>@course.Name</td>
-                                    <td>@course.Description</td>
-                                    <td>@course.InstructorName</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                    <label for="courseSelect" class="form-label">Select Courses</label>
+                    <select class="form-select form-select-lg" multiple name="CourseIds[]" id="courseSelect"
+                            size="5" required>
+                        @foreach (var course in Model)
+                        {
+                            <option value="@course.Id">
+                                @course.Name - @course.Description (@course.InstructorName)
+                            </option>
+                        }
+                    </select>
+                    <div class="form-text text-muted">
+                        Hold Ctrl (Windows) or Command (Mac) to select multiple courses
+                    </div>
                 </div>
 
-                <div class="d-grid">
+                <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Cancel</a>
                 </div>
             </form>
         </div>

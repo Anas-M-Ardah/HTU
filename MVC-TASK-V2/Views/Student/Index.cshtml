@@ -6,7 +6,7 @@
         <tr>
             <th>Student Name</th>
             <th>Email</th>
-            <th>Course</th>
+            <th>Courses</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -16,11 +16,23 @@
             <tr>
                 <td>@student.Name</td>
                 <td>@student.Email</td>
-                <td>@student.Course.Name</td>
                 <td>
-                    @*//try HTML.ActionLink*@
-                    <a href="/student/update?sId=@student.Id" class="btn btn-warning">Update</a>
-                    @Html.ActionLink("Update2", "Update2", "Student", new { sId = student.Id }, new { @class = "btn btn-warning" })
+                    @if (student.Courses != null && student.Courses.Any())
+                    {
+                        <ul class="list-unstyled mb-0">
+                            @foreach (var course in student.Courses)
+                            {
+                                <li>@course.Name</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span class="text-muted">No courses enrolled</span>
+                    }
+                </td>
+                <td>
+                    <a href="/student/update?sId=@student.Id" class="btn btn-warning btn-sm">Update</a>
                 </td>
             </tr>
         }
