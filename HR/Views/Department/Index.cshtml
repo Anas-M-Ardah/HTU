@@ -1,0 +1,13 @@
+﻿@model List<Department>
+
+<table>
+    <tr>
+        <th>Department Name</th>
+    </tr>
+    @foreach (Department department in Model)
+    {
+        <tr>
+           <td>@department.departmentName</td>
+        </tr>
+    }
+</table>

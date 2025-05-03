@@ -1,0 +1,29 @@
+﻿@model Employee
+
+<form asp-action="EditEmp">
+    <input asp-for="employeeId" type="hidden" />
+
+    <label>Name</label>
+    <input asp-for="employeeName" class="form-control" />
+
+    <label>Salary</label>
+    <input asp-for="salary" class="form-control" />
+
+    <label>Departments</label>
+    <select name="departmentIds" multiple class="form-control">
+        @foreach (Department department in ViewBag.Departments)
+        {
+            bool isSelected = Model.employeeDepartments
+                .Any(ed => ed.departmentId == department.departmentId);
+            
+            if(isSelected){
+                <option selected value="@department.departmentId">@department.departmentName</option>
+            } else{
+                <option value="@department.departmentId">@department.departmentName</option>
+            }
+           
+        }
+    </select>
+
+    <button type="submit" class="btn btn-primary">Update Employee</button>
+</form>
