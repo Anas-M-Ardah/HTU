@@ -1,3 +1,6 @@
+using HR.Models;
+using HR.Repository;
+
 namespace HR
 {
     public class Program
@@ -8,6 +11,8 @@ namespace HR
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<HRContext>();
+            builder.Services.AddTransient<EmployeeRepository>();
 
             var app = builder.Build();
 
