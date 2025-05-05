@@ -1,29 +1,53 @@
-﻿@model Employee
+﻿@model HR.EmployeeDTO
+@{
+    ViewData["Title"] = "Edit Employee";
+}
 
-<form asp-action="EditEmp">
-    <input asp-for="employeeId" type="hidden" />
+<div class="container">
+    <h2>Edit Employee</h2>
+    
+    <form asp-action="EditEmp">
+        <div class="form-group">
+            <input asp-for="employeeId" type="hidden" />
 
-    <label>Name</label>
-    <input asp-for="employeeName" class="form-control" />
+            <div class="mb-3">
+                <label asp-for="employeeName" class="form-label">Name</label>
+                <input asp-for="employeeName" class="form-control" />
+                <span asp-validation-for="employeeName" class="text-danger"></span>
+            </div>
 
-    <label>Salary</label>
-    <input asp-for="salary" class="form-control" />
+            <div class="mb-3">
+                <label asp-for="salary" class="form-label">Salary</label>
+                <input asp-for="salary" class="form-control" />
+                <span asp-validation-for="salary" class="text-danger"></span>
+            </div>
 
-    <label>Departments</label>
-    <select name="departmentIds" multiple class="form-control">
-        @foreach (Department department in ViewBag.Departments)
-        {
-            bool isSelected = Model.employeeDepartments
-                .Any(ed => ed.departmentId == department.departmentId);
-            
-            if(isSelected){
-                <option selected value="@department.departmentId">@department.departmentName</option>
-            } else{
-                <option value="@department.departmentId">@department.departmentName</option>
-            }
-           
-        }
-    </select>
+            <div class="mb-3">
+                <label asp-for="departments" class="form-label">Departments</label>
+                <select name="employeeDepartments" multiple class="form-control">
+                    @foreach (var department in Model.departments)
+                    {
+                        bool isSelected = Model.employeeDepartments?
+                            .Any(ed => ed.departmentId == department.departmentId) ?? false;
 
-    <button type="submit" class="btn btn-primary">Update Employee</button>
-</form>
+                        if (isSelected)
+                        {
+                            <option selected value="@department.departmentId">@department.departmentName</option>
+                        }
+                        else
+                        {
+                            <option value="@department.departmentId">@department.departmentName</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="departments" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Update Employee</button>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+

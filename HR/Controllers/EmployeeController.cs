@@ -7,8 +7,8 @@ namespace HR.Controllers
 {
     public class EmployeeController : Controller
     {
-        private EmployeeRepository _employeeRepository { get; set; }
-        public EmployeeController(EmployeeRepository employeeRepository) 
+        private IEmployeeRepository _employeeRepository { get; set; }
+        public EmployeeController(IEmployeeRepository employeeRepository) 
         {
             _employeeRepository = employeeRepository;
         }
@@ -34,12 +34,18 @@ namespace HR.Controllers
 
         public IActionResult Edit(int employeeId)
         {
-            var emp = _employeeRepository.GetAll();
-            var departments = _employeeRepository.GetAllDepartments();
-            ViewBag.Departments = departments;
-            return View(emp);
-        }
+            var employee = _employeeRepository.GetById(employeeId);
 
+            var employeeDTO = new EmployeeDTO
+            {
+                employeeId = employee.employeeId,
+                employeeName = employee.employeeName,
+                salary = employee.salary,
+                departments = _employeeRepository.GetAllDepartments()
+            };
+
+            return View(employeeDTO);
+        }
         public IActionResult EditEmp(Employee employee, int[] departmentIds)
         {
             _employeeRepository.Update(employee, departmentIds);

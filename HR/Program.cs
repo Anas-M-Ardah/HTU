@@ -12,7 +12,7 @@ namespace HR
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<HRContext>();
-            builder.Services.AddTransient<EmployeeRepository>();
+            builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
             var app = builder.Build();
 

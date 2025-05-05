@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HR.Repository
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
         public HRContext _hrContext { get; set; }
 
@@ -18,6 +18,12 @@ namespace HR.Repository
                 .Include(x => x.employeeDepartments)
                 .ThenInclude(x => x.department)
                 .ToList();
+        }
+
+        public Employee GetById(int id)
+        {
+            var employee = _hrContext.Employees.Include(x => x.employeeDepartments).ThenInclude(x => x.department).FirstOrDefault(x => x.employeeId == id);
+            return employee;
         }
 
         public void Add(Employee employee, int[] departmentIds)
